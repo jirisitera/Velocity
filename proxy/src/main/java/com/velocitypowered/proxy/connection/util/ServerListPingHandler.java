@@ -51,10 +51,6 @@ public class ServerListPingHandler {
       version = ProtocolVersion.MAXIMUM_VERSION;
     }
     VelocityConfiguration configuration = server.getConfiguration();
-    
-    
-    
-    
     return new ServerPing(
         new ServerPing.Version(version.getProtocol(),
             configuration.getPingRequestBrand() + " " + ProtocolVersion.SUPPORTED_VERSION_STRING),

@@ -17,6 +17,7 @@
 
 package com.velocitypowered.proxy;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
@@ -181,9 +182,17 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
 
   @Override
   public ProxyVersion getVersion() {
+    Package pkg = VelocityServer.class.getPackage();
     String implName = this.configuration.getDebugScreenBrand();
-    String implVersion = "<unknown>";
-    String implVendor = "Velocity Contributors";
+    String implVendor;
+    String implVersion;
+    if (pkg != null) {
+      implVersion = MoreObjects.firstNonNull(pkg.getImplementationVersion(), "<unknown>");
+      implVendor = MoreObjects.firstNonNull(pkg.getImplementationVendor(), "Velocity Contributors");
+    } else {
+      implVersion = "<unknown>";
+      implVendor = "Velocity Contributors";
+    }
     return new ProxyVersion(implName, implVendor, implVersion);
   }
 
@@ -199,7 +208,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
   @EnsuresNonNull({"serverKeyPair", "servers", "pluginManager", "eventManager", "scheduler",
       "console", "cm", "configuration"})
   void start() {
-    logger.info("Booting up {} {}...", getVersion().getName(), getVersion().getVersion());
+    logger.info("Booting up...");
     console.setupStreams();
 
     registerTranslations();
