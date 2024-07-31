@@ -17,7 +17,6 @@
 
 package com.velocitypowered.proxy;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
@@ -182,20 +181,9 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
 
   @Override
   public ProxyVersion getVersion() {
-    Package pkg = VelocityServer.class.getPackage();
-    String implName;
-    String implVersion;
-    String implVendor;
-    if (pkg != null) {
-      implName = MoreObjects.firstNonNull(pkg.getImplementationTitle(), "Velocity");
-      implVersion = MoreObjects.firstNonNull(pkg.getImplementationVersion(), "<unknown>");
-      implVendor = MoreObjects.firstNonNull(pkg.getImplementationVendor(), "Velocity Contributors");
-    } else {
-      implName = "Velocity";
-      implVersion = "<unknown>";
-      implVendor = "Velocity Contributors";
-    }
-
+    String implName = this.configuration.getDebugScreenBrand();
+    String implVersion = "<unknown>";
+    String implVendor = "Velocity Contributors";
     return new ProxyVersion(implName, implVendor, implVersion);
   }
 

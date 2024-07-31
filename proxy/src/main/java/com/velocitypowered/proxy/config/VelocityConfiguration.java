@@ -406,7 +406,15 @@ public class VelocityConfiguration implements ProxyConfig {
   public boolean isForceKeyAuthentication() {
     return forceKeyAuthentication;
   }
-
+  
+  public String getDebugScreenBrand() {
+    return this.advanced.getDebugScreenBrand();
+  }
+  
+  public String getPingRequestBrand() {
+    return this.advanced.getPingRequestBrand();
+  }
+  
   @Override
   public String toString() {
     return MoreObjects.toStringHelper(this)
@@ -716,6 +724,10 @@ public class VelocityConfiguration implements ProxyConfig {
     private boolean logPlayerConnections = true;
     @Expose
     private boolean acceptTransfers = false;
+    @Expose
+    private String debugScreenBrand = "Velocity";
+    @Expose
+    private String pingRequestBrand = "Velocity";
 
     private Advanced() {
     }
@@ -741,6 +753,8 @@ public class VelocityConfiguration implements ProxyConfig {
         this.logCommandExecutions = config.getOrElse("log-command-executions", false);
         this.logPlayerConnections = config.getOrElse("log-player-connections", true);
         this.acceptTransfers = config.getOrElse("accepts-transfers", false);
+        this.debugScreenBrand = config.getOrElse("debug-screen-brand", "Velocity");
+        this.pingRequestBrand = config.getOrElse("ping-request-brand", "Velocity");
       }
     }
 
@@ -803,6 +817,14 @@ public class VelocityConfiguration implements ProxyConfig {
     public boolean isAcceptTransfers() {
       return this.acceptTransfers;
     }
+    
+    public String getDebugScreenBrand() {
+      return this.debugScreenBrand;
+    }
+    
+    public String getPingRequestBrand() {
+      return this.pingRequestBrand;
+    }
 
     @Override
     public String toString() {
@@ -821,6 +843,8 @@ public class VelocityConfiguration implements ProxyConfig {
           + ", logCommandExecutions=" + logCommandExecutions
           + ", logPlayerConnections=" + logPlayerConnections
           + ", acceptTransfers=" + acceptTransfers
+          + ", debugScreenBrand=" + debugScreenBrand
+          + ", pingRequestBrand=" + pingRequestBrand
           + '}';
     }
   }

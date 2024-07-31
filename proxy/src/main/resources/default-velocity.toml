@@ -145,6 +145,15 @@ log-player-connections = true
 # Transfer packet (Minecraft 1.20.5) to be received.
 accepts-transfers = false
 
+# Allows the name of the proxy in the F3 debug screen to be customized,
+# changing it to this value for all players on all servers.
+debug-screen-brand = "Velocity"
+
+# Allows the name of the proxy in the server list to be customized,
+# changing it to this value for all players. In the vanilla server list,
+# this will only show up for players who are not running a supported version.
+ping-request-brand = "Velocity"
+
 [query]
 # Whether to enable responding to GameSpy 4 query responses or not.
 enabled = false
