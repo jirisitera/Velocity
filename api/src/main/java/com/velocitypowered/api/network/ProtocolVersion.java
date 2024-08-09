@@ -82,7 +82,7 @@ public enum ProtocolVersion implements Ordered<ProtocolVersion> {
       return true;
     }
   },
-  MINECRAFT_1_21(767, "1.21") {
+  MINECRAFT_1_21(767, "1.21", "1.21.1") {
     @Override
     public boolean isSupported() {
       return true;
