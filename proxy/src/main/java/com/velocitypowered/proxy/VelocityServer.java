@@ -229,6 +229,9 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
   void start() {
     logger.info("Booting up...");
     console.setupStreams();
+    
+    this.doStartupConfigLoad();
+    
     pluginManager.registerPlugin(this.createVirtualPlugin());
 
     registerTranslations();
@@ -269,8 +272,6 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
     );
     new GlistCommand(this).register();
     new SendCommand(this).register();
-
-    this.doStartupConfigLoad();
 
     for (Map.Entry<String, String> entry : configuration.getServers().entrySet()) {
       servers.register(new ServerInfo(entry.getKey(), AddressUtil.parseAddress(entry.getValue())));
