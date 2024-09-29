@@ -19,4 +19,4 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{github.run_number}}
-          files: proxy/build/libs/velocity-proxy-3.4.0-SNAPSHOT-all.jar
+          files: proxy/build/libs/velocity-proxy-release-all.jar
