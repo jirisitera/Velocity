@@ -202,7 +202,7 @@ public class VelocityServer implements ProxyServer, ForwardingAudience {
       implVersion = "<unknown>";
       implVendor = "Velocity Contributors";
     }
-	
+
     return new ProxyVersion(implName, implVendor, implVersion);
   }
 
