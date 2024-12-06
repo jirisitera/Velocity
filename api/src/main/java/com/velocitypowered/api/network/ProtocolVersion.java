@@ -80,10 +80,10 @@ public enum ProtocolVersion implements Ordered<ProtocolVersion> {
   MINECRAFT_1_21(767, "1.21", "1.21.1"),
   MINECRAFT_1_21_2(768, "1.21.2", "1.21.3"),
   MINECRAFT_1_21_4(769, "1.21.4") {
-	  @Override
-	  public boolean isSupported() {
-		  return true;
-	  }
+    @Override
+    public boolean isSupported() {
+      return true;
+    }
   };
 
   private static final int SNAPSHOT_BIT = 30;
