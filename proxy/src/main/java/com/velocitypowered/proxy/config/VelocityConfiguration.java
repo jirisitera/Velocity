@@ -406,6 +406,11 @@ public class VelocityConfiguration implements ProxyConfig {
   public boolean isForceKeyAuthentication() {
     return forceKeyAuthentication;
   }
+
+  public boolean isEnableReusePort() {
+    return advanced.isEnableReusePort();
+  }
+
   
   public String getDebugScreenBrand() {
     return this.advanced.getDebugScreenBrand();
@@ -725,6 +730,8 @@ public class VelocityConfiguration implements ProxyConfig {
     @Expose
     private boolean acceptTransfers = false;
     @Expose
+    private boolean enableReusePort = false;
+    @Expose
     private String debugScreenBrand = "Velocity";
     @Expose
     private String pingRequestBrand = "Velocity";
@@ -753,6 +760,7 @@ public class VelocityConfiguration implements ProxyConfig {
         this.logCommandExecutions = config.getOrElse("log-command-executions", false);
         this.logPlayerConnections = config.getOrElse("log-player-connections", true);
         this.acceptTransfers = config.getOrElse("accepts-transfers", false);
+        this.enableReusePort = config.getOrElse("enable-reuse-port", false);
         this.debugScreenBrand = config.getOrElse("debug-screen-brand", "Velocity");
         this.pingRequestBrand = config.getOrElse("ping-request-brand", "Velocity");
       }
@@ -818,6 +826,10 @@ public class VelocityConfiguration implements ProxyConfig {
       return this.acceptTransfers;
     }
     
+    public boolean isEnableReusePort() {
+      return enableReusePort;
+    }
+    
     public String getDebugScreenBrand() {
       return this.debugScreenBrand;
     }
@@ -843,6 +855,7 @@ public class VelocityConfiguration implements ProxyConfig {
           + ", logCommandExecutions=" + logCommandExecutions
           + ", logPlayerConnections=" + logPlayerConnections
           + ", acceptTransfers=" + acceptTransfers
+          + ", enableReusePort=" + enableReusePort
           + ", debugScreenBrand=" + debugScreenBrand
           + ", pingRequestBrand=" + pingRequestBrand
           + '}';
